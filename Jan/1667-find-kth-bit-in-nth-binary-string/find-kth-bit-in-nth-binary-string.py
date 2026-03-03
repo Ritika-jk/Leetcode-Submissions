@@ -14,7 +14,7 @@ class Solution(object):
             return prev + "1" + reversed_inv
         
         binStr = binaryStringBuilder(n)
-        return binStr[k - 1]
+        return binStr[k - 1] 
         """
         :type n: int
         :type k: int

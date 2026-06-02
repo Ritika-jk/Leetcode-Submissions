@@ -1,7 +1,28 @@
-class Solution:
-    def earliestFinishTime(self, ls: List[int], ld: List[int], ws: List[int], wd: List[int]) -> int:
-        def f(a,b,aa,bb):
-            e = min(map(add,a,b))
-            return min(max(s,e)+d for s,d in zip(aa,bb))
-
-        return min(f(ls,ld,ws,wd),f(ws,wd,ls,ld))
+class Solution(object):
+    def earliestFinishTime(self, landStartTime, landDuration, waterStartTime, waterDuration):
+        l=len(landStartTime);
+        w=len(waterStartTime);
+        res=float("inf");
+        for i in range(l):
+            for j in range(w):
+                t=0;
+                t+=landStartTime[i]+landDuration[i];
+                if(waterStartTime[j]>t):
+                    t=waterStartTime[j];
+                t+=waterDuration[j];
+                res=min(res,t);
+                t=0;
+                t+=waterStartTime[j]+waterDuration[j];
+                if(landStartTime[i]>t):
+                    t=landStartTime[i];
+                t+=landDuration[i];
+                res=min(res,t);
+        return res
+        """
+        :type landStartTime: List[int]
+        :type landDuration: List[int]
+        :type waterStartTime: List[int]
+        :type waterDuration: List[int]
+        :rtype: int
+        """
+        

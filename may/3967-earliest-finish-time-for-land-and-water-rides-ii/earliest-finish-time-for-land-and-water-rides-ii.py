@@ -1,0 +1,11 @@
+class Solution:
+    def earliestFinishTime(self, landStart, landDur, waterStart, waterDur):
+
+        def solve(start1, dur1, start2, dur2):
+            finish1 = min(s + d for s, d in zip(start1, dur1))
+            return min(max(s, finish1) + d for s, d in zip(start2, dur2))
+
+        return min(
+            solve(landStart,  landDur,  waterStart, waterDur),
+            solve(waterStart, waterDur, landStart,  landDur)
+        )

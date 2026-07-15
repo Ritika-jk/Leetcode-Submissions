@@ -18,19 +18,29 @@ class Solution(object):
         
         # return new_head
 
-        a=[]
-        temp = head
-        while temp is not None:
-            a.append(temp.val)
-            temp = temp.next
-        temp = head
-        i = len(a)-1
-        while temp is not None:
-            temp.val = a[i]
-            i-=1
-            temp=temp.next
-        return head
+        # a=[]
+        # temp = head
+        # while temp is not None:
+        #     a.append(temp.val)
+        #     temp = temp.next
+        # temp = head
+        # i = len(a)-1
+        # while temp is not None:
+        #     temp.val = a[i]
+        #     i-=1
 
+
+        #     temp=temp.next
+        # return head
+
+        prev = None
+        curr = head
+        while curr is not None:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        return prev
 
 
 

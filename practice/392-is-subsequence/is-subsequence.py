@@ -1,7 +1,6 @@
 class Solution(object):
     def isSubsequence(self, s, t):
-        if len(s)==0:
-            return True
+        
         s= list(s)
         i=0
         for j in t:
@@ -10,7 +9,8 @@ class Solution(object):
         if i== len(s):
             return True
         return False 
-
+        if len(s)==0:
+            return True
         
         """
         :type s: str

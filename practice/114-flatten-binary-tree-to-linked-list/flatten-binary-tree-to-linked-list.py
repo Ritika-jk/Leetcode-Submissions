@@ -7,9 +7,9 @@
 class Solution(object):
     def flatten(self, root):
         if not root:
-            return
+            return 0
 
-        stack = [root]
+        stack =[root]
         prev = None
 
         while stack:
@@ -17,12 +17,11 @@ class Solution(object):
             if prev:
                 prev.left = None
                 prev.right = curr
-
             if curr.right:
                 stack.append(curr.right)
             if curr.left:
                 stack.append(curr.left)
-
+            
             prev = curr
         """
         :type root: Optional[TreeNode]
